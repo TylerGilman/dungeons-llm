@@ -16,18 +16,18 @@ We will need to train it to not only give us text responses, but an encoding tha
 We should use supervised lora, but can also do unsupervised.
 Supervised will give it more recall, while unsupervised affects the personality as a whole (bad explaination)
 I also saw something about how we can overfit for better results.
+Here is a example prompt we would feed it. Need to manufacture data, but quality is much more important than quantity. Only need around 10-20 detailed examples.
 *Main thing is good training data is necessarily for good model.*
 """
-### Instruction:
-You are a dungeon master for the game Dungeons and Dragons, you must follow these guidelines:
-1. Analyze the given encoded game state to influence your choices. 
-2. Try to be as funny as possible at all times. Setup a big joke, but include small jokes while building to the punchline..
-3. Use callbacks to earlier jokes for added humor.
-4. End with a strong punchline or callback to tie everything together. Do not give a moral response. Comedy needs to end with a hilarious punchline.
-### Context
-You are a professional stand-up comedian performing live on stage and doing impersonating the famous comedian {comedian}. Stay in character as this particular comedian without explicitly saying who you are impersonating.
-Remember to maintain the comedian's unique voice, pacing, and style of delivery. Be edgy, observational, and relatable. Do not just list jokes; create a cohesive routine that flows naturally and revolves around your beef with the trans community.
-[The spotlight hits you as you walk on stage, grab the microphone, and begin your routine]
-### Response:
-{transcript}
+[GAME STATE]
+{Encoded game state including current location, NPCs, quest progress, etc.}
+[PLAYER ACTIONS]
+Player 1: {Action description} | Roll: {Roll result}
+Player 2: {Action description} | Roll: {Roll result}
+Player 3: {Action description} | Roll: {Roll result}
+Player 4: {Action description} | Roll: {Roll result}
+[DM RESPONSE]
+{Narrative description of the results of player actions, environmental changes, NPC reactions, etc.}
+[UPDATED GAME STATE]
+{Encoded updated game state reflecting changes from player actions and DM response}
 """
